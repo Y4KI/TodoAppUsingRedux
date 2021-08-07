@@ -10,6 +10,9 @@ import {
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
   TYPING,
+  VIEW_ACTIVE,
+  VIEW_ALL,
+  VIEW_COMPLETED,
 } from "./types";
 
 const initialState = {
@@ -20,16 +23,19 @@ const initialState = {
       title: "Building-Todo-Form",
       completed: false,
       editing: false,
+      isHidden: false,
     },
     {
       title: "Building-Todo-List",
       completed: false,
       editing: false,
+      isHidden: false,
     },
     {
       title: "Building-Actions",
       completed: false,
       editing: false,
+      isHidden: false,
     },
   ],
   view: [
@@ -118,6 +124,45 @@ const reducer = (state = initialState, action) => {
         ...state,
         view: [...showTask],
       };
+    case VIEW_ALL:
+      let viewAll = [...state.tasks];
+      viewAll.forEach((e) => {
+        e.isHidden = false;
+        console.log(e);
+      });
+      return {
+        ...state,
+        tasks: [...viewAll],
+      };
+
+    case VIEW_ACTIVE:
+      let viewActive = [...state.tasks];
+      viewActive.forEach((e) => {
+        if (e.completed === true) {
+          return (e.isHidden = true);
+        } else {
+          return (e.isHidden = false);
+        }
+      });
+      return {
+        ...state,
+        tasks: [...viewActive],
+      };
+
+    case VIEW_COMPLETED:
+      let viewcompleted = [...state.tasks];
+      viewcompleted.forEach((e) => {
+        if (e.completed === false) {
+          return (e.isHidden = true);
+        } else {
+          return (e.isHidden = false);
+        }
+      });
+      return {
+        ...state,
+        tasks: [...viewcompleted],
+      };
+
     default:
       return state;
   }

@@ -5,9 +5,9 @@ import {
   DELETE_ALL,
   DELETE_COMPLETED,
   SHOW_ME,
-  // VIEW_ACTIVE,
-  // VIEW_ALL,
-  // VIEW_COMPLETED,
+  VIEW_ACTIVE,
+  VIEW_ALL,
+  VIEW_COMPLETED,
 } from "../Redux/types";
 
 function TodoDetails() {
@@ -33,19 +33,22 @@ function TodoDetails() {
     const active = { type: SHOW_ME, payload: index };
     dispatch(active);
   };
+  const viewChange = (e, index) => {
+    if (view[0].title === e) {
+      const active = { type: VIEW_ALL, payload: index };
+      dispatch(active);
+      return;
+    }
+    if (view[1].title === e) {
+      const active = { type: VIEW_ACTIVE, payload: index };
+      dispatch(active);
+      return;
+    } else {
+      const active = { type: VIEW_COMPLETED, payload: index };
+      dispatch(active);
+    }
+  };
 
-  // const ALL = (index) => {
-  //   const active = { type: VIEW_ALL, payload: index };
-  //   dispatch(active);
-  // };
-  // const ACTIVE = (index) => {
-  //   const active = { type: VIEW_ACTIVE, payload: index };
-  //   dispatch(active);
-  // };
-  // const COMPLETED = (index) => {
-  //   const active = { type: VIEW_COMPLETED, payload: index };
-  //   dispatch(active);
-  // };
   return (
     <div className="todo-details flex justify-center my-5">
       <div>
@@ -93,27 +96,14 @@ function TodoDetails() {
                       ? "mx-1 hover:text-blue-600 text-blue-600"
                       : "mx-1 hover:text-blue-600"
                   }
-                  onClick={() => showMe(index)}
+                  onClick={() => {
+                    viewChange(i.title, index);
+                    return showMe(index);
+                  }}
                 >
                   {i.title}
                 </button>
               ))}
-
-              {/* <button className="mx-1 hover:text-blue-600" onClick={DeleteAll}>
-                ALL{" "}
-              </button>
-              <button
-                className="mx-1 hover:text-blue-600"
-                onClick={DeleteActive}
-              >
-                ACTIVE
-              </button>
-              <button
-                className=" hover:text-blue-600"
-                onClick={DeleteCompleted}
-              >
-                COMPLETED
-              </button> */}
             </div>
           </div>
         </div>
