@@ -28,8 +28,8 @@ function TodoList() {
     const action = { type: DELETE_TASK, payload: index };
     dispatch(action);
   };
-  const toggleEditing = (index) => {
-    const action = { type: TOGGLE_EDITING, payload: index };
+  const toggleEditing = (index, newValue) => {
+    const action = { type: TOGGLE_EDITING, payload: index, newValue };
     dispatch(action);
   };
   const toggleComplete = (index) => {
@@ -71,7 +71,10 @@ function TodoList() {
               </div>
 
               <div className="todo-list__btn flex items-center">
-                <FaEdit onClick={() => toggleEditing(index)} className="mr-1" />
+                <FaEdit
+                  onClick={() => toggleEditing(index, i.title)}
+                  className="mr-1"
+                />
                 <BsTrash onClick={() => deleteTask(index)} />
               </div>
             </div>
@@ -81,7 +84,7 @@ function TodoList() {
                 className="items-center flex justify-between"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  toggleEditing(index);
+                  toggleEditing(index, value2);
                   return editTask(index);
                 }}
               >

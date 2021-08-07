@@ -57,6 +57,7 @@ const reducer = (state = initialState, action) => {
       editing[action.payload].editing = !editing[action.payload].editing;
       return {
         ...state,
+        editingValue: action.newValue,
         tasks: [...editing],
       };
     case TOGGLE_COMPLETE:
