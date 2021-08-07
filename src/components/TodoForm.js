@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TODOS, TYPING } from "../Redux/types";
@@ -34,7 +34,7 @@ function TodoForm() {
             value={value}
           />
           <button className="bg-blue-500 py-2 px-3 rounded-md text-white absolute top-0 right-0 text-purple-900">
-            <AiFillPlusCircle />
+            <AiFillPlusCircle className="text-green-500 bg-white rounded-full hover:text-green-600" />
           </button>
         </div>
       </form>

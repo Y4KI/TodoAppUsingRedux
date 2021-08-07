@@ -45,37 +45,44 @@ function TodoList() {
             key={index}
             className="todo-list__items w-64 my-2 bg-green-500 px-3 py-1 items-center"
           >
-            <div
-              className={
-                i.editing
-                  ? "hidden flex justify-between"
-                  : "flex justify-between"
-              }
-            >
-              <div className="relative items-center">
-                <h1
-                  onClick={() => toggleComplete(index)}
-                  className={
-                    i.completed
-                      ? "text-yellow-400 opacity-50"
-                      : "text-yellow-400"
-                  }
-                >
-                  {i.title}
-                </h1>
-                <div
-                  className={
-                    i.completed ? "line absolute top-3" : "line absolute hidden"
-                  }
-                ></div>
-              </div>
+            <div className={i.isHidden ? "hidden" : "block"}>
+              <div
+                className={
+                  i.editing
+                    ? "hidden flex justify-between"
+                    : "flex justify-between"
+                }
+              >
+                <div className="relative items-center">
+                  <h1
+                    onClick={() => toggleComplete(index)}
+                    className={
+                      i.completed
+                        ? "text-yellow-400 opacity-50"
+                        : "text-yellow-400"
+                    }
+                  >
+                    {i.title}
+                  </h1>
+                  <div
+                    className={
+                      i.completed
+                        ? "line absolute top-3"
+                        : "line absolute hidden"
+                    }
+                  ></div>
+                </div>
 
-              <div className="todo-list__btn flex items-center">
-                <FaEdit
-                  onClick={() => toggleEditing(index, i.title)}
-                  className="mr-1"
-                />
-                <BsTrash onClick={() => deleteTask(index)} />
+                <div className="todo-list__btn flex items-center">
+                  <FaEdit
+                    onClick={() => toggleEditing(index, i.title)}
+                    className="mr-1 cursor-pointer text-blue-600 hover:text-blue-700"
+                  />
+                  <BsTrash
+                    className="cursor-pointer text-red-600 hover:text-red-700"
+                    onClick={() => deleteTask(index)}
+                  />
+                </div>
               </div>
             </div>
 
@@ -90,7 +97,7 @@ function TodoList() {
               >
                 <input type="text" onChange={editingValue} value={value2} />
                 <button>
-                  <AiFillCheckCircle />
+                  <AiFillCheckCircle className="cursor-pointer text-indigo-500" />
                 </button>
               </form>
             </div>

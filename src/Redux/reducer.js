@@ -1,11 +1,12 @@
 import {
   ADD_TODOS,
-  DELETEACTIVE,
-  DELETEALL,
-  DELETECOMPLETED,
+  DELETE_ACTIVE,
+  DELETE_ALL,
+  DELETE_COMPLETED,
   DELETE_TASK,
   EDIT_TASK,
   EDIT_VALUE,
+  SHOW_ME,
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
   TYPING,
@@ -15,9 +16,26 @@ const initialState = {
   value: "",
   editingValue: "",
   tasks: [
-    { title: "Building-Todo-Form", completed: false, editing: false },
-    { title: "Building-Todo-List", completed: false, editing: false },
-    { title: "Building-Actions", completed: false, editing: false },
+    {
+      title: "Building-Todo-Form",
+      completed: false,
+      editing: false,
+    },
+    {
+      title: "Building-Todo-List",
+      completed: false,
+      editing: false,
+    },
+    {
+      title: "Building-Actions",
+      completed: false,
+      editing: false,
+    },
+  ],
+  view: [
+    { title: "ALL", isChosen: true },
+    { title: "ACTIVE", isChosen: false },
+    { title: "COMPLETED", isChosen: false },
   ],
 };
 
@@ -67,19 +85,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         tasks: [...complete],
       };
-    case DELETEALL:
+    case DELETE_ALL:
       return {
         ...state,
         tasks: [],
       };
-    case DELETEACTIVE:
+    case DELETE_ACTIVE:
       let active = [...state.tasks];
       let activeDeleted = active.filter((i) => i.completed === true);
       return {
         ...state,
         tasks: [...activeDeleted],
       };
-    case DELETECOMPLETED:
+    case DELETE_COMPLETED:
       let completed = [...state.tasks];
       let completedDeleted = completed.filter((i) => i.completed === false);
       return {
@@ -87,6 +105,19 @@ const reducer = (state = initialState, action) => {
         tasks: [...completedDeleted],
       };
 
+    case SHOW_ME:
+      let showTask = [...state.view];
+      showTask.forEach((e, i) => {
+        if (i === action.payload) {
+          e.isChosen = true;
+        } else {
+          e.isChosen = false;
+        }
+      });
+      return {
+        ...state,
+        view: [...showTask],
+      };
     default:
       return state;
   }
