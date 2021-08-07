@@ -4,16 +4,20 @@ import {
   DELETEALL,
   DELETECOMPLETED,
   DELETE_TASK,
+  EDIT_TASK,
+  EDIT_VALUE,
   TOGGLE_COMPLETE,
+  TOGGLE_EDITING,
   TYPING,
 } from "./types";
 
 const initialState = {
   value: "",
+  editingValue: "",
   tasks: [
-    { title: "task 1", completed: false },
-    { title: "task 2", completed: false },
-    { title: "task 3", completed: false },
+    { title: "Building-Todo-Form", completed: false, editing: false },
+    { title: "Building-Todo-List", completed: false, editing: false },
+    { title: "Building-Actions", completed: false, editing: false },
   ],
 };
 
@@ -34,6 +38,27 @@ const reducer = (state = initialState, action) => {
         ...state,
         tasks,
       };
+    case EDIT_VALUE:
+      return {
+        ...state,
+        editingValue: action.payload,
+      };
+    case EDIT_TASK:
+      let submitNewtask = [...state.tasks];
+      submitNewtask[action.payload].title = state.editingValue;
+      return {
+        ...state,
+        tasks: [...submitNewtask],
+        editingValue: "",
+      };
+
+    case TOGGLE_EDITING:
+      let editing = [...state.tasks];
+      editing[action.payload].editing = !editing[action.payload].editing;
+      return {
+        ...state,
+        tasks: [...editing],
+      };
     case TOGGLE_COMPLETE:
       let complete = [...state.tasks];
       complete[action.payload].completed = !complete[action.payload].completed;
@@ -48,14 +73,14 @@ const reducer = (state = initialState, action) => {
       };
     case DELETEACTIVE:
       let active = [...state.tasks];
-      let activeDeleted = active.filter((i) => i.completed === false);
+      let activeDeleted = active.filter((i) => i.completed === true);
       return {
         ...state,
         tasks: [...activeDeleted],
       };
     case DELETECOMPLETED:
       let completed = [...state.tasks];
-      let completedDeleted = completed.filter((i) => i.completed === true);
+      let completedDeleted = completed.filter((i) => i.completed === false);
       return {
         ...state,
         tasks: [...completedDeleted],

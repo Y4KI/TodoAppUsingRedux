@@ -5,3 +5,6 @@ export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE";
 export const DELETEALL = "DELETEALL";
 export const DELETEACTIVE = "DELETEACTIVE";
 export const DELETECOMPLETED = "DELETECOMPLETED";
+export const TOGGLE_EDITING = "TOGGLE_EDITING";
+export const EDIT_TASK = "EDIT_TASK";
+export const EDIT_VALUE = "EDIT_VALUE";
