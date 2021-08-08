@@ -6,6 +6,7 @@ import {
   DELETE_TASK,
   EDIT_TASK,
   EDIT_VALUE,
+  END_EDITING,
   SHOW_ME,
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
@@ -78,11 +79,23 @@ const reducer = (state = initialState, action) => {
 
     case TOGGLE_EDITING:
       let editing = [...state.tasks];
+      editing.forEach((i) => (i.editing = false));
       editing[action.payload].editing = !editing[action.payload].editing;
       return {
         ...state,
         editingValue: action.newValue,
         tasks: [...editing],
+      };
+    case END_EDITING:
+      let endEditing = [...state.tasks];
+      endEditing[action.payload].title = action.newValue;
+      endEditing[action.payload].completed = false;
+      endEditing.forEach((i) => {
+        i.editing = false;
+      });
+      return {
+        ...state,
+        tasks: [...endEditing],
       };
     case TOGGLE_COMPLETE:
       let complete = [...state.tasks];

@@ -7,6 +7,7 @@ import {
   DELETE_TASK,
   EDIT_TASK,
   EDIT_VALUE,
+  END_EDITING,
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
 } from "../Redux/types";
@@ -30,6 +31,10 @@ function TodoList() {
   };
   const toggleEditing = (index, newValue) => {
     const action = { type: TOGGLE_EDITING, payload: index, newValue };
+    dispatch(action);
+  };
+  const endEditing = (index, newValue) => {
+    const action = { type: END_EDITING, payload: index, newValue };
     dispatch(action);
   };
   const toggleComplete = (index) => {
@@ -59,10 +64,11 @@ function TodoList() {
               <div className="relative items-center">
                 <h1
                   onClick={() => toggleComplete(index)}
+                  onDoubleClick={() => toggleEditing(index, i.title)}
                   className={
                     i.completed
-                      ? "text-yellow-400 opacity-50"
-                      : "text-yellow-400"
+                      ? "text-yellow-400 opacity-50 cursor-pointer"
+                      : "text-yellow-400 cursor-pointer"
                   }
                 >
                   {i.title}
@@ -91,11 +97,16 @@ function TodoList() {
                 className="items-center flex justify-between"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  toggleEditing(index, value2);
+                  endEditing(index, value2);
                   return editTask(index);
                 }}
               >
-                <input type="text" onChange={editingValue} value={value2} />
+                <input
+                  type="text"
+                  onChange={editingValue}
+                  value={value2}
+                  className="outline-none rounded px-2 text-sm"
+                />
                 <button>
                   <AiFillCheckCircle className="cursor-pointer text-indigo-500" />
                 </button>
