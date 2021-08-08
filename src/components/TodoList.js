@@ -55,6 +55,7 @@ function TodoList() {
             }
           >
             <div
+              onDoubleClick={() => toggleEditing(index, i.title)}
               className={
                 i.editing
                   ? "hidden flex justify-between"
@@ -64,7 +65,6 @@ function TodoList() {
               <div className="relative items-center">
                 <h1
                   onClick={() => toggleComplete(index)}
-                  onDoubleClick={() => toggleEditing(index, i.title)}
                   className={
                     i.completed
                       ? "text-yellow-400 opacity-50 cursor-pointer"
@@ -105,7 +105,7 @@ function TodoList() {
                   type="text"
                   onChange={editingValue}
                   value={value2}
-                  className="outline-none rounded px-2 text-sm"
+                  className="outline-none rounded px-2"
                 />
                 <button>
                   <AiFillCheckCircle className="cursor-pointer text-indigo-500" />
