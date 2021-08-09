@@ -45,4 +45,9 @@ body .todo .todo-box .todo-list__items {
 body .todo .todo-box .todo-list__items h1 {
   color: #4cc9f0 !important;
 }
+
+.active-btn {
+  font-size: 8px !important;
+  font-weight: bold;
+}
 /*# sourceMappingURL=Todo.css.map */

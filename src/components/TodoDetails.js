@@ -50,64 +50,57 @@ function TodoDetails() {
   };
 
   return (
-    <div className="todo-details flex justify-center mt-5">
-      <div>
-        <div className="sm:w-60 md:w-72 flex justify-between text-xs">
+    <div className="todo-details my-5">
+      <div className="flex justify-between">
+        <div className="todo-details-left pr-10">
           <h1 className="font-bold">All Tasks : {tasks.length}</h1>
-          <div className="flex items-center">
-            <h1 className="mr-2">DELETE : </h1>
-            <div className="todo-details__buttons">
-              <button
-                className="mx-0.5 md:mx-1 hover:text-blue-600"
-                onClick={DeleteAll}
-              >
-                ALL
-              </button>
-              <button
-                className="mx-0.5 md:mx-1 hover:text-blue-600"
-                onClick={DeleteActive}
-              >
-                ACTIVE
-              </button>
-              <button
-                className="mx-0.5 md:mx-1 hover:text-blue-600 mx-1"
-                onClick={DeleteCompleted}
-              >
-                COMPLETED
-              </button>
-            </div>
-          </div>
+          <h1 className="font-bold">
+            Active Tasks : {tasks.filter((i) => i.completed === false).length}
+          </h1>
+          <h1 className="font-bold">
+            Completed Tasks : {tasks.filter((i) => i.completed === true).length}
+          </h1>
         </div>
-        <div className="flex justify-between text-xs">
-          <div>
-            <h1 className="font-bold">
-              Active Tasks : {tasks.filter((i) => i.completed === false).length}
-            </h1>
-            <h1 className="font-bold">
-              Completed Tasks :{" "}
-              {tasks.filter((i) => i.completed === true).length}
-            </h1>
+        <div className="todo-details-right">
+          <div className="flex">
+            <h1 className="mr-2 w-10">DELETE : </h1>
+            <button
+              className="mx-0.5 md:mx-1 hover:text-blue-600 active-btn"
+              onClick={DeleteAll}
+            >
+              ALL
+            </button>
+            <button
+              className="mx-0.5 md:mx-1 hover:text-blue-600 active-btn"
+              onClick={DeleteActive}
+            >
+              ACTIVE
+            </button>
+            <button
+              className="mx-0.5 md:mx-1 hover:text-blue-600 mx-1 active-btn"
+              onClick={DeleteCompleted}
+            >
+              COMPLETED
+            </button>
           </div>
           <div className="flex items-center">
-            <h1 className="mr-2">VIEW : </h1>
-            <div className="todo-details__buttons">
-              {view.map((i, index) => (
-                <button
-                  key={index}
-                  className={
-                    i.isChosen
-                      ? "md:mx-1 mx-0.5 hover:text-blue-600 text-blue-600"
-                      : "md:mx-1 mx-0.5 hover:text-blue-600"
-                  }
-                  onClick={() => {
-                    viewChange(i.title, index);
-                    return showMe(index);
-                  }}
-                >
-                  {i.title}
-                </button>
-              ))}
-            </div>
+            <h1 className="mr-2 w-10">VIEW : </h1>
+            {view.map((i, index) => (
+              <button
+                key={index}
+                className={
+                  i.isChosen
+                    ? "md:mx-1 mx-0.5 hover:text-blue-600 text-blue-600 active-btn"
+                    : "md:mx-1 mx-0.5 hover:text-blue-600 active-btn"
+                }
+                onClick={() => {
+                  viewChange(i.title, index);
+                  return showMe(index);
+                }}
+              >
+                {i.title}
+              </button>
+            ))}
           </div>
         </div>
       </div>
