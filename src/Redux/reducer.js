@@ -1,3 +1,4 @@
+import { initialState } from "./initialValue";
 import {
   ADD_TODOS,
   DELETE_ACTIVE,
@@ -7,6 +8,7 @@ import {
   EDIT_TASK,
   EDIT_VALUE,
   END_EDITING,
+  HIDE_AND_SHOW,
   SHOW_ME,
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
@@ -15,36 +17,6 @@ import {
   VIEW_ALL,
   VIEW_COMPLETED,
 } from "./types";
-
-const initialState = {
-  value: "",
-  editingValue: "",
-  tasks: [
-    {
-      title: "Building-Todo-Form",
-      completed: false,
-      editing: false,
-      isHidden: false,
-    },
-    {
-      title: "Building-Todo-List",
-      completed: false,
-      editing: false,
-      isHidden: false,
-    },
-    {
-      title: "Building-Actions",
-      completed: false,
-      editing: false,
-      isHidden: false,
-    },
-  ],
-  view: [
-    { title: "ALL", isChosen: true },
-    { title: "ACTIVE", isChosen: false },
-    { title: "COMPLETED", isChosen: false },
-  ],
-};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -104,6 +76,42 @@ const reducer = (state = initialState, action) => {
         ...state,
         tasks: [...complete],
       };
+    case HIDE_AND_SHOW:
+      if (state.view[0].isChosen) {
+        let view = [...state.tasks];
+        view.forEach((e) => (e.isHidden = false));
+        return {
+          ...state,
+          tasks: [...view],
+        };
+      }
+      if (state.view[1].isChosen) {
+        let view = [...state.tasks];
+        view.forEach((e) => {
+          if (e.completed) {
+            e.isHidden = true;
+          } else {
+            e.isHidden = false;
+          }
+        });
+        return {
+          ...state,
+          tasks: [...view],
+        };
+      } else {
+        let view = [...state.tasks];
+        view.forEach((e) => {
+          if (!e.completed) {
+            e.isHidden = true;
+          } else {
+            e.isHidden = false;
+          }
+        });
+        return {
+          ...state,
+          tasks: [...view],
+        };
+      }
     case DELETE_ALL:
       return {
         ...state,
@@ -151,7 +159,7 @@ const reducer = (state = initialState, action) => {
     case VIEW_ACTIVE:
       let viewActive = [...state.tasks];
       viewActive.forEach((e) => {
-        if (e.completed === true) {
+        if (e.completed) {
           return (e.isHidden = true);
         } else {
           return (e.isHidden = false);

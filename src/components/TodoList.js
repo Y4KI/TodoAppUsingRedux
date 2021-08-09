@@ -8,6 +8,7 @@ import {
   EDIT_TASK,
   EDIT_VALUE,
   END_EDITING,
+  HIDE_AND_SHOW,
   TOGGLE_COMPLETE,
   TOGGLE_EDITING,
 } from "../Redux/types";
@@ -41,6 +42,10 @@ function TodoList() {
     const action = { type: TOGGLE_COMPLETE, payload: index };
     dispatch(action);
   };
+  const hideNshow = (index) => {
+    const action = { type: HIDE_AND_SHOW, payload: index };
+    dispatch(action);
+  };
 
   return (
     <div className="todo-list flex justify-center font-sans">
@@ -64,7 +69,10 @@ function TodoList() {
             >
               <div className="relative items-center">
                 <h1
-                  onClick={() => toggleComplete(index)}
+                  onClick={() => {
+                    toggleComplete(index);
+                    hideNshow(index);
+                  }}
                   className={
                     i.completed
                       ? "text-yellow-400 opacity-50 cursor-pointer"
