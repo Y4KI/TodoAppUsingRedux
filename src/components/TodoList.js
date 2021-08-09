@@ -113,7 +113,7 @@ function TodoList() {
                   type="text"
                   onChange={editingValue}
                   value={value2}
-                  className="outline-none rounded px-2"
+                  className="outline-none rounded px-2 w-44 sm:w-48 md:w-52 lg:w-56"
                 />
                 <button>
                   <AiFillCheckCircle className="cursor-pointer text-green-500 hover:text-green-400" />
