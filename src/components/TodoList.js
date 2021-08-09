@@ -55,8 +55,8 @@ function TodoList() {
             key={index}
             className={
               i.isHidden
-                ? "todo-list__items w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center hidden"
-                : "todo-list__items w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center block"
+                ? "todo-list__items w-48 sm:w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center hidden"
+                : "todo-list__items w-48 sm:w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center block"
             }
           >
             <div

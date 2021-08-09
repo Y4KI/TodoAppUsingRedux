@@ -25,7 +25,7 @@ function TodoForm() {
   return (
     <div className="todo-form my-5">
       <form className="flex justify-center" onSubmit={addtodos}>
-        <div className="relative lg:w-80 md:w-72 w-60 items-center">
+        <div className="relative lg:w-80 md:w-72 sm:w-60 w-52 items-center">
           <input
             type="text"
             placeholder="Create new todo..."
