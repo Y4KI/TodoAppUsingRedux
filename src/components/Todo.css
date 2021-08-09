@@ -38,12 +38,18 @@ body .todo .todo-box .todo-details h1 {
   color: #560bad;
 }
 
-body .todo .todo-box .todo-list__items {
-  background-color: #4361ee;
-}
-
 body .todo .todo-box .todo-list__items h1 {
   color: #4cc9f0 !important;
+}
+
+body .todo .todo-box .todo-list__items:nth-child(2n + 1) {
+  background: -webkit-gradient(linear, left top, right top, from(#5d0cff), to(#9b00fa));
+  background: linear-gradient(90deg, #5d0cff 0%, #9b00fa 100%);
+}
+
+body .todo .todo-box .todo-list__items {
+  background: #ee436c;
+  background: linear-gradient(135deg, #ee436c 18%, #1e0cbf 71%);
 }
 
 .active-btn {
