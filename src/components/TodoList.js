@@ -55,8 +55,8 @@ function TodoList() {
             key={index}
             className={
               i.isHidden
-                ? "todo-list__items w-64 my-2 bg-green-500 px-3 py-1 items-center hidden"
-                : "todo-list__items w-64 my-2 bg-green-500 px-3 py-1 items-center block"
+                ? "todo-list__items w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center hidden"
+                : "todo-list__items w-56 md:w-64 shadow-lg lg:w-72 my-2 px-3 py-1 items-center block"
             }
           >
             <div
@@ -79,7 +79,7 @@ function TodoList() {
                       : "text-yellow-400 cursor-pointer"
                   }
                 >
-                  {i.title}
+                  {index + 1}:{i.title}
                 </h1>
                 <div
                   className={
@@ -91,10 +91,10 @@ function TodoList() {
               <div className="todo-list__btn flex items-center">
                 <FaEdit
                   onClick={() => toggleEditing(index, i.title)}
-                  className="mr-1 cursor-pointer text-blue-600 hover:text-blue-700"
+                  className="mr-1 cursor-pointer text-green-400 hover:text-green-500"
                 />
                 <BsTrash
-                  className="cursor-pointer text-red-600 hover:text-red-700"
+                  className="cursor-pointer text-red-400 hover:text-red-500"
                   onClick={() => deleteTask(index)}
                 />
               </div>
@@ -116,7 +116,7 @@ function TodoList() {
                   className="outline-none rounded px-2"
                 />
                 <button>
-                  <AiFillCheckCircle className="cursor-pointer text-indigo-500" />
+                  <AiFillCheckCircle className="cursor-pointer text-green-500 hover:text-green-400" />
                 </button>
               </form>
             </div>

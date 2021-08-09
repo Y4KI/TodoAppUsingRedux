@@ -3,19 +3,19 @@ export const initialState = {
   editingValue: "",
   tasks: [
     {
-      title: "Building-Todo-Form",
+      title: "Task 1",
       completed: false,
       editing: false,
       isHidden: false,
     },
     {
-      title: "Building-Todo-List",
+      title: "Task 2",
       completed: false,
       editing: false,
       isHidden: false,
     },
     {
-      title: "Building-Actions",
+      title: "Task 3",
       completed: false,
       editing: false,
       isHidden: false,

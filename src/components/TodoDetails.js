@@ -50,24 +50,27 @@ function TodoDetails() {
   };
 
   return (
-    <div className="todo-details flex justify-center my-5">
+    <div className="todo-details flex justify-center mt-5">
       <div>
-        <div className="w-72 flex justify-between text-xs">
+        <div className="sm:w-60 md:w-72 flex justify-between text-xs">
           <h1 className="font-bold">All Tasks : {tasks.length}</h1>
           <div className="flex items-center">
             <h1 className="mr-2">DELETE : </h1>
             <div className="todo-details__buttons">
-              <button className="mx-1 hover:text-blue-600" onClick={DeleteAll}>
+              <button
+                className="mx-0.5 md:mx-1 hover:text-blue-600"
+                onClick={DeleteAll}
+              >
                 ALL
               </button>
               <button
-                className="mx-1 hover:text-blue-600"
+                className="mx-0.5 md:mx-1 hover:text-blue-600"
                 onClick={DeleteActive}
               >
                 ACTIVE
               </button>
               <button
-                className=" hover:text-blue-600 mx-1"
+                className="mx-0.5 md:mx-1 hover:text-blue-600 mx-1"
                 onClick={DeleteCompleted}
               >
                 COMPLETED
@@ -75,7 +78,7 @@ function TodoDetails() {
             </div>
           </div>
         </div>
-        <div className="w-72 flex justify-between text-xs">
+        <div className="flex justify-between text-xs">
           <div>
             <h1 className="font-bold">
               Active Tasks : {tasks.filter((i) => i.completed === false).length}
@@ -85,7 +88,7 @@ function TodoDetails() {
               {tasks.filter((i) => i.completed === true).length}
             </h1>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <h1 className="mr-2">VIEW : </h1>
             <div className="todo-details__buttons">
               {view.map((i, index) => (
@@ -93,8 +96,8 @@ function TodoDetails() {
                   key={index}
                   className={
                     i.isChosen
-                      ? "mx-1 hover:text-blue-600 text-blue-600"
-                      : "mx-1 hover:text-blue-600"
+                      ? "md:mx-1 mx-0.5 hover:text-blue-600 text-blue-600"
+                      : "md:mx-1 mx-0.5 hover:text-blue-600"
                   }
                   onClick={() => {
                     viewChange(i.title, index);

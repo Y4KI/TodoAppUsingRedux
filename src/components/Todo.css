@@ -1,0 +1,48 @@
+* {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body {
+  background-color: #4895ef;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .todo .todo-box {
+  background-color: #4cc9f0;
+  border-radius: 25px;
+  padding: 20px 10px;
+}
+
+body .todo .todo-box h1 {
+  color: #f72585;
+}
+
+body .todo .todo-box .todo-form form input {
+  font-size: 16px !important;
+  outline: none;
+}
+
+body .todo .todo-box .todo-details h1 {
+  font-size: 10px;
+  line-height: 25px;
+  color: #560bad;
+}
+
+body .todo .todo-box .todo-list__items {
+  background-color: #4361ee;
+}
+
+body .todo .todo-box .todo-list__items h1 {
+  color: #4cc9f0 !important;
+}
+/*# sourceMappingURL=Todo.css.map */

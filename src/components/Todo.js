@@ -2,12 +2,15 @@ import React from "react";
 import TodoDetails from "./TodoDetails";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
+import "./Todo.css";
 
 function Todo() {
   return (
-    <div className="todo container mx-auto p-4 font-sans flex justify-center">
-      <div className="todo-box bg-gray-100 px-5 pt-10 pb-20 border-8">
-        <h1 className="text-2xl font-bold text-center">Todo APP</h1>
+    <div className="todo container flex justify-center mx-auto">
+      <div className="todo-box lg:pt-10 px-5 pt-5 lg:w-96 md:w-80 w-72 shadow-2xl">
+        <h1 className="lg:text-4xl md:text-2xl font-bold text-center">
+          ToDo APP
+        </h1>
         <TodoForm />
         <TodoList />
         <TodoDetails />

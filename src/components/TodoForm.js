@@ -24,16 +24,16 @@ function TodoForm() {
 
   return (
     <div className="todo-form my-5">
-      <form className="flex justify-center border-0" onSubmit={addtodos}>
-        <div className="relative w-72 items-center">
+      <form className="flex justify-center" onSubmit={addtodos}>
+        <div className="relative lg:w-80 md:w-72 w-60 items-center">
           <input
             type="text"
             placeholder="Create new todo..."
-            className="outline-white bg-blue-300 px-3 text-white py-1 w-full placeholder-white rounded-md"
+            className="bg-blue-300 px-3 text-white py-1 w-full placeholder-white rounded-md"
             onChange={typing}
             value={value}
           />
-          <button className="bg-blue-500 py-2 px-3 rounded-md text-white absolute top-0 right-0 text-purple-900">
+          <button className="bg-blue-500 py-2 lg:px-5 px-3 rounded-md text-white absolute top-0 right-0 text-purple-900">
             <AiFillPlusCircle className="text-green-500 bg-white rounded-full hover:text-green-600" />
           </button>
         </div>
