@@ -23,6 +23,24 @@ const reducer = (state = initialState, action) => {
     case TYPING:
       return { ...state, value: action.payload };
     case ADD_TODOS:
+      // let addTodos = [...state.tasks];
+      // addTodos.forEach((i) => {
+      //   if (i.title === state.value) {
+      //     return {
+      //       ...state,
+      //       value: "",
+      //     };
+      //   } else {
+      //     return {
+      //       ...state,
+      //       tasks: [
+      //         ...state.tasks,
+      //         { title: action.payload, completed: false },
+      //       ],
+      //       value: "",
+      //     };
+      //   }
+      // });
       return {
         ...state,
         tasks: [...state.tasks, { title: action.payload, completed: false }],

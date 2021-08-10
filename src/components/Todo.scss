@@ -33,6 +33,7 @@ body {
       .todo-list__items {
         h1 {
           color: #4cc9f0 !important;
+          overflow: hidden;
         }
       }
       .todo-list__items:nth-child(2n + 1) {

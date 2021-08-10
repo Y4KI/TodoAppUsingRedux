@@ -5,6 +5,7 @@ import { ADD_TODOS, TYPING } from "../Redux/types";
 
 function TodoForm() {
   const value = useSelector((state) => state.value);
+  const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
   const typing = (e) => {
@@ -17,9 +18,9 @@ function TodoForm() {
       e.preventDefault();
       return;
     }
-    e.preventDefault();
     const action = { type: ADD_TODOS, payload: value };
     dispatch(action);
+    e.preventDefault();
   };
 
   return (

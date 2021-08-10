@@ -75,8 +75,8 @@ function TodoList() {
                   }}
                   className={
                     i.completed
-                      ? "text-yellow-400 opacity-50 cursor-pointer"
-                      : "text-yellow-400 cursor-pointer"
+                      ? "text-yellow-400 opacity-50 cursor-pointer w-32 sm:w-44 md:w-52 lg:w-56"
+                      : "text-yellow-400 cursor-pointer w-32 sm:w-44 md:w-52 lg:w-56"
                   }
                 >
                   {index + 1}:{i.title}
@@ -113,7 +113,7 @@ function TodoList() {
                   type="text"
                   onChange={editingValue}
                   value={value2}
-                  className="outline-none rounded px-2 w-44 md:w-52 lg:w-56"
+                  className="outline-none rounded px-2 w-32 sm:w-44 md:w-52 lg:w-56"
                 />
                 <button>
                   <AiFillCheckCircle className="cursor-pointer text-green-500 hover:text-green-400" />
